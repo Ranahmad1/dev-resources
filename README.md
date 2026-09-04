@@ -1,24 +1,55 @@
 # 🚀 Dev Resources
 
-A curated collection of useful cheatsheets, templates, and references for full stack developers.
+A curated collection of cheatsheets, templates, and system design notes for full stack developers. Built to save time and serve as a quick reference.
 
-## 📂 Contents
+---
 
-| File | Description |
-|------|-------------|
-| `html-cheatsheet.md` | HTML5 elements & attributes quick reference |
-| `css-cheatsheet.md` | CSS3 properties, flexbox & grid guide |
-| `javascript-cheatsheet.md` | JS array methods, ES6+ features, async/await |
-| `git-commands.md` | Most used Git commands with examples |
-| `sql-cheatsheet.md` | SQL queries for beginners to intermediate |
-| `php-cheatsheet.md` | PHP syntax, arrays, functions quick reference |
-| `react-cheatsheet.md` | React hooks, components, and patterns |
-| `api-rest-guide.md` | REST API design principles & HTTP status codes |
-| `regex-cheatsheet.md` | Common regex patterns with examples |
-| `templates/contact-form.html` | Ready-to-use HTML contact form |
-| `templates/responsive-navbar.html` | Responsive navigation bar template |
-| `templates/landing-page.html` | Simple landing page starter |
+## 📂 Cheatsheets
+
+| File | What's Inside |
+|------|--------------|
+| [`html-cheatsheet.md`](html-cheatsheet.md) | HTML5 elements, forms, tables, semantic tags, SEO meta |
+| [`css-cheatsheet.md`](css-cheatsheet.md) | Flexbox, Grid, animations, glassmorphism, media queries |
+| [`javascript-cheatsheet.md`](javascript-cheatsheet.md) | ES6+, array methods, DOM, async/await, local storage |
+| [`git-commands.md`](git-commands.md) | Init, branch, merge, undo, stash, tags — full workflow |
+| [`sql-cheatsheet.md`](sql-cheatsheet.md) | CRUD, JOINs, GROUP BY, indexes, useful functions |
+| [`api-rest-guide.md`](api-rest-guide.md) | HTTP methods, status codes, REST conventions, Fetch API |
+| [`regex-cheatsheet.md`](regex-cheatsheet.md) | Common patterns (email, phone, URL, password) + JS usage |
+| [`python-cheatsheet.md`](python-cheatsheet.md) | Variables, lists, dicts, OOP, file I/O, standard library |
+| [`php-laravel-cheatsheet.md`](php-laravel-cheatsheet.md) | PHP basics + Laravel routes, Eloquent, Blade, Artisan |
+| [`linux-terminal-commands.md`](linux-terminal-commands.md) | Navigation, files, permissions, networking, processes |
+| [`vscode-shortcuts.md`](vscode-shortcuts.md) | Shortcuts, Emmet, must-have extensions |
+| [`system-design-notes.md`](system-design-notes.md) | Caching, load balancing, databases, CAP theorem, microservices |
+
+---
+
+## 🎨 Templates (Ready-to-use HTML)
+
+| File | Preview |
+|------|---------|
+| [`templates/contact-form.html`](templates/contact-form.html) | Clean contact form with validation |
+| [`templates/responsive-navbar.html`](templates/responsive-navbar.html) | Mobile-friendly hamburger navbar |
+| [`templates/pricing-cards.html`](templates/pricing-cards.html) | 3-tier pricing cards with monthly/annual toggle |
+| [`templates/loading-spinners.html`](templates/loading-spinners.html) | 9 CSS loading animations (spinner, dots, skeleton, ripple...) |
+
+---
+
+## 🧠 System Design Topics Covered
+
+- Vertical vs Horizontal Scaling
+- Load Balancers & Algorithms
+- Caching (Redis, CDN, strategies)
+- SQL vs NoSQL — when to use what
+- REST vs GraphQL vs gRPC vs WebSockets
+- Message Queues (Kafka, RabbitMQ)
+- Microservices vs Monolith
+- CAP Theorem
+- Rate Limiting algorithms
+- Security (JWT, XSS, CSRF, SQL injection)
+- System Design Interview Template
+
+---
 
 ## ⭐ Star this repo if it helped you!
 
-> Made with ❤️ by [Rana Ahmad](https://github.com/Ranahmad1)
+> Made with ❤️ by [Rana Ahmad](https://github.com/Ranahmad1) — Full Stack Developer from Faisalabad, Pakistan
