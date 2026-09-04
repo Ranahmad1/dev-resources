@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Cards</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: #888;
+      text-align: center;
+      margin-bottom: 48px;
+      font-size: 16px;
+    }
+
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      color: #aaa;
+    }
+
+    .toggle {
+      width: 48px;
+      height: 26px;
+      background: #007bff;
+      border-radius: 50px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      background: white;
+      border-radius: 50%;
+      top: 3px; left: 3px;
+      transition: left 0.3s;
+    }
+    .toggle.annual::after { left: 25px; }
+    .toggle.annual { background: #7c3aed; }
+
+    .badge {
+      background: #7c3aed;
+      color: white;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .cards {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1100px;
+    }
+
+    .card {
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 20px;
+      padding: 40px 32px;
+      width: 300px;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .card.popular {
+      border-color: #007bff;
+      background: linear-gradient(145deg, #1a1a3e, #1a2a4a);
+      transform: scale(1.04);
+    }
+
+    .card.popular:hover {
+      transform: scale(1.04) translateY(-6px);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #007bff;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 18px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #888;
+      margin-bottom: 16px;
+    }
+
+    .price {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .price span {
+      font-size: 18px;
+      font-weight: 400;
+      color: #888;
+    }
+
+    .price-desc {
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #2a2a4a;
+      margin-bottom: 24px;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 15px;
+      color: #ccc;
+    }
+
+    .features li::before {
+      content: '✓';
+      color: #22c55e;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .features li.no::before {
+      content: '✕';
+      color: #555;
+    }
+    .features li.no { color: #555; }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn:hover { opacity: 0.9; transform: scale(1.02); }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #2a2a4a;
+      color: white;
+    }
+
+    .btn-primary { background: #007bff; color: white; }
+    .btn-pro { background: linear-gradient(135deg, #7c3aed, #007bff); color: white; }
+
+    @media (max-width: 768px) {
+      .cards { flex-direction: column; align-items: center; }
+      .card.popular { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <h2 class="section-title">Simple, Transparent Pricing</h2>
+  <p class="section-subtitle">No hidden fees. Cancel anytime.</p>
+
+  <div class="toggle-wrap">
+    <span>Monthly</span>
+    <div class="toggle" id="toggle" onclick="toggleBilling()"></div>
+    <span>Annual</span>
+    <span class="badge">Save 30%</span>
+  </div>
+
+  <div class="cards">
+    <!-- Free -->
+    <div class="card">
+      <p class="plan-name">Starter</p>
+      <div class="price">$0<span>/mo</span></div>
+      <p class="price-desc">Forever free</p>
+      <hr>
+      <ul class="features">
+        <li>5 Projects</li>
+        <li>1 GB Storage</li>
+        <li>Basic Analytics</li>
+        <li>Email Support</li>
+        <li class="no">Custom Domain</li>
+        <li class="no">Priority Support</li>
+        <li class="no">API Access</li>
+      </ul>
+      <button class="btn btn-outline">Get Started Free</button>
+    </div>
+
+    <!-- Pro -->
+    <div class="card popular">
+      <div class="popular-badge">⭐ Most Popular</div>
+      <p class="plan-name">Pro</p>
+      <div class="price" id="proPrice">$19<span>/mo</span></div>
+      <p class="price-desc" id="proDesc">Billed monthly</p>
+      <hr>
+      <ul class="features">
+        <li>Unlimited Projects</li>
+        <li>50 GB Storage</li>
+        <li>Advanced Analytics</li>
+        <li>Priority Email Support</li>
+        <li>Custom Domain</li>
+        <li>Priority Support</li>
+        <li class="no">API Access</li>
+      </ul>
+      <button class="btn btn-primary">Start Pro Trial</button>
+    </div>
+
+    <!-- Enterprise -->
+    <div class="card">
+      <p class="plan-name">Enterprise</p>
+      <div class="price" id="entPrice">$49<span>/mo</span></div>
+      <p class="price-desc" id="entDesc">Billed monthly</p>
+      <hr>
+      <ul class="features">
+        <li>Unlimited Projects</li>
+        <li>500 GB Storage</li>
+        <li>Custom Analytics</li>
+        <li>24/7 Phone Support</li>
+        <li>Custom Domain</li>
+        <li>Dedicated Manager</li>
+        <li>Full API Access</li>
+      </ul>
+      <button class="btn btn-pro">Contact Sales</button>
+    </div>
+  </div>
+
+  <script>
+    let isAnnual = false;
+    function toggleBilling() {
+      isAnnual = !isAnnual;
+      document.getElementById('toggle').classList.toggle('annual', isAnnual);
+      document.getElementById('proPrice').innerHTML  = isAnnual ? '$13<span>/mo</span>' : '$19<span>/mo</span>';
+      document.getElementById('entPrice').innerHTML  = isAnnual ? '$34<span>/mo</span>' : '$49<span>/mo</span>';
+      document.getElementById('proDesc').textContent = isAnnual ? 'Billed $156/year' : 'Billed monthly';
+      document.getElementById('entDesc').textContent = isAnnual ? 'Billed $408/year' : 'Billed monthly';
+    }
+  </script>
+</body>
+</html>

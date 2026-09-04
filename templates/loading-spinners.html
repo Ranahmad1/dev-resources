@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Spinners Collection</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: white;
+      padding: 60px 30px;
+    }
+    h1 { text-align: center; font-size: 28px; margin-bottom: 8px; }
+    .subtitle { text-align: center; color: #888; margin-bottom: 60px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 32px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .item {
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 16px;
+      padding: 36px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .label {
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+      font-family: monospace;
+    }
+
+    /* 1. Classic Border Spinner */
+    .spinner-1 {
+      width: 48px; height: 48px;
+      border: 4px solid #2a2a4a;
+      border-top-color: #007bff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    /* 2. Dual Ring */
+    .spinner-2 {
+      width: 48px; height: 48px;
+      border: 4px solid transparent;
+      border-top-color: #007bff;
+      border-bottom-color: #7c3aed;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    /* 3. Pulsing Dot */
+    .spinner-3 {
+      width: 48px; height: 48px;
+      background: #007bff;
+      border-radius: 50%;
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    /* 4. Dots */
+    .spinner-4 {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .spinner-4 span {
+      width: 12px; height: 12px;
+      background: #007bff;
+      border-radius: 50%;
+      animation: bounce 1.4s ease-in-out infinite;
+    }
+    .spinner-4 span:nth-child(2) { animation-delay: 0.2s; }
+    .spinner-4 span:nth-child(3) { animation-delay: 0.4s; }
+
+    /* 5. Ripple */
+    .spinner-5 {
+      width: 48px; height: 48px;
+      position: relative;
+    }
+    .spinner-5::before, .spinner-5::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 3px solid #007bff;
+      border-radius: 50%;
+      animation: ripple 1.5s ease-out infinite;
+    }
+    .spinner-5::after { animation-delay: 0.75s; }
+
+    /* 6. Bar Loader */
+    .spinner-6 {
+      display: flex;
+      gap: 5px;
+      align-items: flex-end;
+      height: 40px;
+    }
+    .spinner-6 span {
+      width: 6px;
+      background: #007bff;
+      border-radius: 4px;
+      animation: bars 1.2s ease-in-out infinite;
+    }
+    .spinner-6 span:nth-child(1) { height: 20px; animation-delay: 0s; }
+    .spinner-6 span:nth-child(2) { height: 32px; animation-delay: 0.1s; }
+    .spinner-6 span:nth-child(3) { height: 40px; animation-delay: 0.2s; }
+    .spinner-6 span:nth-child(4) { height: 32px; animation-delay: 0.3s; }
+    .spinner-6 span:nth-child(5) { height: 20px; animation-delay: 0.4s; }
+
+    /* 7. Gradient Spinner */
+    .spinner-7 {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, transparent 0%, #007bff 100%);
+      animation: spin 0.8s linear infinite;
+      -webkit-mask: radial-gradient(farthest-side, transparent 60%, black 60%);
+      mask: radial-gradient(farthest-side, transparent 60%, black 60%);
+    }
+
+    /* 8. Square Spin */
+    .spinner-8 {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, #007bff, #7c3aed);
+      border-radius: 6px;
+      animation: square-spin 1.2s ease-in-out infinite;
+    }
+
+    /* 9. Skeleton Loader */
+    .skeleton-wrap {
+      width: 160px;
+    }
+    .skeleton-line {
+      height: 12px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #1a1a2e 25%, #2a2a4a 50%, #1a1a2e 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      margin-bottom: 8px;
+    }
+    .skeleton-line.short { width: 60%; }
+    .skeleton-circle {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, #1a1a2e 25%, #2a2a4a 50%, #1a1a2e 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      margin-bottom: 12px;
+    }
+
+    /* Keyframes */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.5); opacity: 0.4; }
+    }
+    @keyframes bounce {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+      40% { transform: translateY(-16px); opacity: 1; }
+    }
+    @keyframes ripple {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    @keyframes bars {
+      0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+    @keyframes square-spin {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(0.7); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>⏳ Loading Spinners Collection</h1>
+  <p class="subtitle">Copy-paste ready CSS loading animations</p>
+
+  <div class="grid">
+    <div class="item">
+      <div class="spinner-1"></div>
+      <p class="label">Classic Spin</p>
+    </div>
+    <div class="item">
+      <div class="spinner-2"></div>
+      <p class="label">Dual Ring</p>
+    </div>
+    <div class="item">
+      <div class="spinner-3"></div>
+      <p class="label">Pulse Dot</p>
+    </div>
+    <div class="item">
+      <div class="spinner-4"><span></span><span></span><span></span></div>
+      <p class="label">Bouncing Dots</p>
+    </div>
+    <div class="item">
+      <div class="spinner-5"></div>
+      <p class="label">Ripple</p>
+    </div>
+    <div class="item">
+      <div class="spinner-6"><span></span><span></span><span></span><span></span><span></span></div>
+      <p class="label">Sound Bars</p>
+    </div>
+    <div class="item">
+      <div class="spinner-7"></div>
+      <p class="label">Gradient Arc</p>
+    </div>
+    <div class="item">
+      <div class="spinner-8"></div>
+      <p class="label">Square Spin</p>
+    </div>
+    <div class="item">
+      <div class="skeleton-wrap">
+        <div class="skeleton-circle"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+      <p class="label">Skeleton Loader</p>
+    </div>
+  </div>
+</body>
+</html>
