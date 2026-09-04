@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; }
+    nav {
+      background: #1a1a2e;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .logo {
+      color: white;
+      font-size: 22px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .logo span { color: #007bff; }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #007bff; }
+    .nav-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: white;
+      transition: all 0.3s;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: #1a1a2e;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { padding: 12px 24px; }
+      .nav-btn { display: none; }
+      .hamburger { display: flex; }
+    }
+    /* Demo content */
+    main { padding: 60px 24px; text-align: center; }
+    main h1 { font-size: 36px; color: #1a1a2e; margin-bottom: 12px; }
+    main p { color: #666; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#" class="logo">My<span>Brand</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="nav-btn">Get Started</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+    <h1>Welcome to MyBrand</h1>
+    <p>Resize the window to see the responsive navigation in action.</p>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    // Close on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
